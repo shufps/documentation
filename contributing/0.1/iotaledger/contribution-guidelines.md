@@ -6,17 +6,13 @@ The following set of guidelines will help you to contribute to the repositories 
 
 ## Table of contents
 
-[Code of Conduct](#code-of-conduct)
-
 [Do you have a question?](#do-you-have-a-question)
 
 [About the IOTAledger organization](#about-the-iotaledger-organization)
 
 [Getting started with your first contribution](#getting-started-with-your-first-contribution)
 
-## Code of Conduct
-
-This project and everyone participating in it is governed by the [IOTA Code of Conduct](../iotaledger/code-of-conduct.md).
+[Code of Conduct](#code-of-conduct)
 
 ## About the IOTAledger organization
 
@@ -117,3 +113,7 @@ Blueprint demos are example applications of how IOTA technology can be used to s
 At the root of each IOTAledger repository is a contribution guide with advice for getting started.
 
 If you are unsure where to begin, you can start by looking any `beginner` or `help-wanted` issues.
+
+## Code of Conduct
+
+This project and everyone participating in it is governed by the [IOTA Code of Conduct](../iotaledger/code-of-conduct.md).
