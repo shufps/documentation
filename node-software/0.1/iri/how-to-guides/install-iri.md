@@ -79,19 +79,7 @@ LOCAL_SNAPSHOTS_PRUNING_ENABLED = true
 ```
 --------------------
 
-5\. Download the latest spent addresses file and snapshot files, which contains the latest data for the Devnet and Mainnet IOTA networks. This directory is available on [the IOTA Foundation's website](https://dbfiles.iota.org/?prefix=mainnet/iri/local-snapshots-and-spent-addresses/)
-
-:::info:
-Make sure you download the correct directory for your chosen IOTA network.
-:::
-
-6\. Extract the directories. Replace the `$PATH_TO_FILE` placeholder with the path to the file you downloaded.
-
-```bash
-tar -xzvf $PATH_TO_FILE
-```
-
-7\. Download the IRI Docker image and run it. Replace the `$PATH_TO_DIRECTORY` placeholder with the path to the directory where you saved the configuration file.
+5\. Download the IRI Docker image and run it. Replace the `$PATH_TO_DIRECTORY` placeholder with the path to the directory where you saved the configuration file.
 
 ```bash
 docker run --name iri -v $PATH_TO_DIRECTORY/config.ini:/path/to/conf/config.ini iotaledger/iri:latest -c /path/to/conf/config.ini
@@ -107,7 +95,7 @@ To have the IRI Docker container restart on every reboot, add the `--restart=alw
 IRI is running in the background! Now, you can use the IRI API to start interacting with the Tangle.
 :::
 
-8\. Call the [getNodeInfo](../references/api-reference.md#getnodeinfo) endpoint to request general information about the IRI node
+6\. Call the [getNodeInfo](../references/api-reference.md#getnodeinfo) endpoint to request general information about the IRI node
 
     ```bash
     curl -s http://localhost:14265 -X POST -H 'X-IOTA-API-Version: 1' -H 'Content-Type: application/json' -d '{"command": "getNodeInfo"}' | jq
