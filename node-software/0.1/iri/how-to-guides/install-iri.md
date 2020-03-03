@@ -254,17 +254,17 @@ IRI runs in a Java virtual machine, which you can optimize by setting some Java 
 
 1\. Define the Java variables to optimize the Java virtual machine
 
-    ```bash
-    export JAVA_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+DisableAttachMechanism -XX:InitiatingHeapOccupancyPercent=60 -XX:G1MaxNewSizePercent=75 -XX:MaxGCPauseMillis=10000 -XX:+UseG1GC"
-    export JAVA_MIN_MEMORY=2G
-    export JAVA_MAX_MEMORY=4G
-    ```
+```bash
+export JAVA_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+DisableAttachMechanism -XX:InitiatingHeapOccupancyPercent=60 -XX:G1MaxNewSizePercent=75 -XX:MaxGCPauseMillis=10000 -XX:+UseG1GC"
+export JAVA_MIN_MEMORY=2G
+export JAVA_MAX_MEMORY=4G
+```
 
-    **JAVA_OPTIONS:** Commands that optimize the Java virtual machine
+**JAVA_OPTIONS:** Commands that optimize the Java virtual machine
 
-    **JAVA_MIN_MEMORY:** The initial memory allocation for the Java virtual machine
-    
-    **JAVA_MAX_MEMORY:** the maximum memory allocation for the Java virtual machine
+**JAVA_MIN_MEMORY:** The initial memory allocation for the Java virtual machine
+
+**JAVA_MAX_MEMORY:** the maximum memory allocation for the Java virtual machine
 
 2\. [Plan how you want to configure IRI](../how-to-guides/configure-iri.md)
 
@@ -317,15 +317,15 @@ LOCAL_SNAPSHOTS_PRUNING_ENABLED = true
 
 5\. Download the latest spent addresses file and snapshot files, which contains the latest data for the Devnet and Mainnet IOTA networks. This directory is available on [the IOTA Foundation's website](https://dbfiles.iota.org/?prefix=mainnet/iri/local-snapshots-and-spent-addresses/)
 
-    :::info:
-    Make sure you download the correct directory for your chosen IOTA network.
-    :::
+:::info:
+Make sure you download the correct directory for your chosen IOTA network.
+:::
 
 6\. Extract the directories in the same directory as your IRI Java file. Replace `jake` with your Linux username, and replace the `$FILE_NAME` placeholder with the name of the file you downloaded.
 
-    ```bash
-    tar -xzvf /home/jake/node/$FILE_NAME
-    ```
+```bash
+tar -xzvf /home/jake/node/$FILE_NAME
+```
     
 ### Step 3. Run IRI
 
