@@ -36,11 +36,9 @@ To run IRI, you download and run the [IRI Docker image](https://hub.docker.com/r
 
 2\. [Find some neighbors](../how-to-guides/find-neighbor-iri-nodes.md) that are running on your chosen IOTA network and make a note of their URLs or IP addresses
 
-3\. Create a configuration file in the same directory as your IRI Java file, and add your configuration options to it. Replace `jake` with your Linux username.
+3\. Make a directory on your host system in which to save the IRI files
 
-```bash
-nano /home/jake/node/config.ini
-```
+4\. Create a `config.ini` file in that directory, and add your configuration options to it
 
 These are some example configurations:
 
@@ -53,7 +51,7 @@ This file configures IRI to run on the Mainnet, exposes the API on port 14265, a
 [IRI]
 PORT = 14265
 NEIGHBORING_SOCKET_PORT = 15600
-NEIGHBORS = tcp://my.favorite.com:15600 tcp://my.other.favorite.com:15600 
+NEIGHBORS = 
 IXI_DIR = ixi
 DEBUG = false
 DB_PATH = mainnetdb
@@ -81,11 +79,25 @@ LOCAL_SNAPSHOTS_PRUNING_ENABLED = true
 ```
 --------------------
 
-4\. Download the IRI Docker image and run it, passing in your configuration file
+5\. Download the latest spent addresses file and snapshot files, which contains the latest data for the Devnet and Mainnet IOTA networks. This directory is available on [the IOTA Foundation's website](https://dbfiles.iota.org/?prefix=mainnet/iri/local-snapshots-and-spent-addresses/)
+
+:::info:
+Make sure you download the correct directory for your chosen IOTA network.
+:::
+
+6\. Extract the directories. Replace the `$PATH_TO_FILE` placeholder with the path to the file you downloaded.
 
 ```bash
-docker run --name iri iotaledger/iri:latest -c /path/to/conf/config.ini
+tar -xzvf $PATH_TO_FILE
 ```
+
+7\. Download the IRI Docker image and run it. Replace the `$PATH_TO_DIRECTORY` placeholder with the path to the directory where you saved the configuration file.
+
+```bash
+docker run --name iri -v $PATH_TO_DIRECTORY/config.ini:/path/to/conf/config.ini iotaledger/iri:latest -c /path/to/conf/config.ini
+```
+
+This command mounts the configuration file to the `path/to/conf` folder on the Docker container. You can change this path to mount the configuration file to a different folder.
 
 :::info:
 To have the IRI Docker container restart on every reboot, add the `--restart=always` flag to the `docker run` command.
@@ -95,7 +107,7 @@ To have the IRI Docker container restart on every reboot, add the `--restart=alw
 IRI is running in the background! Now, you can use the IRI API to start interacting with the Tangle.
 :::
 
-5\. Call the [getNodeInfo](../references/api-reference.md#getnodeinfo) endpoint to request general information about the IRI node
+8\. Call the [getNodeInfo](../references/api-reference.md#getnodeinfo) endpoint to request general information about the IRI node
 
     ```bash
     curl -s http://localhost:14265 -X POST -H 'X-IOTA-API-Version: 1' -H 'Content-Type: application/json' -d '{"command": "getNodeInfo"}' | jq
@@ -287,7 +299,7 @@ This file configures IRI to run on the Mainnet, exposes the API on port 14265, a
 [IRI]
 PORT = 14265
 NEIGHBORING_SOCKET_PORT = 15600
-NEIGHBORS = tcp://my.favorite.com:15600 tcp://my.other.favorite.com:15600 
+NEIGHBORS = 
 IXI_DIR = ixi
 DEBUG = false
 DB_PATH = mainnetdb
