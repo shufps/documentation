@@ -6,9 +6,9 @@
 
 Version 1.9.0 comes with the following changes, which aren't backwards compatible:
 
-- Empty `signatureMessageFragment` fields (all 9s) in transactions are truncated before being stored in the database to save memory
+- To save memory, empty `signatureMessageFragment` fields (all 9s) in transactions are truncated before being stored in the database
 
-- All snapshot data and spent addresses are stored in a single database
+- For better organization, all snapshot data and spent addresses are stored in a single database
 
 Therefore, after you upgrade, you won't be able to downgrade.
 
@@ -148,7 +148,7 @@ Now, you have a `localsnapshots-db` directory, which contains all your snapshot 
 
 #### Delete your snapshot files and spent addresses
 
-If you don't want to keep your exisiting snapshot data, you can simply delete it.
+If you don't want to keep your exisiting snapshot data, you can delete it.
 
 1. Stop IRI
 
